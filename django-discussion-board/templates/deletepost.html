@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}delete post{% endblock %}
+
+{% block breadcrumb %}
+  <li class="breadcrumb-item"><a href="{% url 'boards:home' %}" class="btn btn-success">Boards</a></li>
+
+{% endblock %}
+
+{% block content %}
+<form method="post" action="{%url 'boards:delete_post' post.topic.board.id post.topic.id post.id%}" class="form">
+  {% csrf_token %}
+  <p class="alert alert-danger" role="alert">are you sure delete this post</p>
+  <button type="submit" class="btn btn-primary">delete</button>
+  <a href="{% url 'boards:topic_posts' post.topic.board.id post.topic.id%}" class="btn btn-primary">cancel</a>
+     
+     
+        
+    </form>
+{% endblock %}
